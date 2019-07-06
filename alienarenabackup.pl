@@ -110,7 +110,7 @@ if (-f "$BACKUPDIR/alienarenabackup-1.tgz")
 	rename("$BACKUPDIR/alienarenabackup-1.tgz", "$BACKUPDIR/alienarenabackup-2.tgz");
 }
 print "Done\nCreating Backup: ";
-system("$TARCMD $BACKUPDIR/alienarenabackup-1.tgz $ALIENARENADIR");
+system("$TARCMD $BACKUPDIR/alienarenabackup-1.tgz '$ALIENARENADIR'");
 if ($BACKUPSERVER ne "")
 {
 	print "Offsite backup requested\n";
