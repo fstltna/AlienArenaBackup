@@ -1,7 +1,7 @@
 #!/usr/bin/perl
 
 # Set these for your situation
-my $ALIENARENADIR = "/root/Alien\ Arena";
+my $ALIENARENADIR = "/root/AlienArena";
 my $BACKUPDIR = "/root/backups";
 my $TARCMD = "/bin/tar czf";
 my $VERSION = "1.0";
