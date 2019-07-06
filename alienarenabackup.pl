@@ -1,13 +1,13 @@
 #!/usr/bin/perl
 
 # Set these for your situation
-my $SYNCDIR = "/sbbs";
+my $ALIENARENADIR = "/root/Alien\ Arena";
 my $BACKUPDIR = "/root/backups";
 my $TARCMD = "/bin/tar czf";
-my $VERSION = "2.0";
+my $VERSION = "1.0";
 
 # Init file data
-my $MySettings = "$ENV{'HOME'}/.sbackuprc";
+my $MySettings = "$ENV{'HOME'}/.aabackuprc";
 my $BACKUPUSER = "";
 my $BACKUPPASS = "";
 my $BACKUPSERVER = "";
@@ -79,8 +79,8 @@ sub PrintDebugCommand
 
 ReadConfigFile();
 
-print "SyncBackup - back up your Synchronet BBS - version $VERSION\n";
-print "======================================================\n";
+print "Alien Arena Backup - back up your Alien Arena Installation - v$VERSION\n";
+print "==================================================================\n";
 
 if (! -d $BACKUPDIR)
 {
@@ -89,34 +89,34 @@ if (! -d $BACKUPDIR)
 }
 print "Moving existing backups: ";
 
-if (-f "$BACKUPDIR/citbackup-5.tgz")
+if (-f "$BACKUPDIR/alienarenabackup-5.tgz")
 {
-	unlink("$BACKUPDIR/syncbackup-5.tgz")  or warn "Could not unlink $BACKUPDIR/syncbackup-5.tgz: $!";
+	unlink("$BACKUPDIR/alienarenabackup-5.tgz")  or warn "Could not unlink $BACKUPDIR/alienarenabackup-5.tgz: $!";
 }
-if (-f "$BACKUPDIR/syncbackup-4.tgz")
+if (-f "$BACKUPDIR/alienarenabackup-4.tgz")
 {
-	rename("$BACKUPDIR/syncbackup-4.tgz", "$BACKUPDIR/syncbackup-5.tgz");
+	rename("$BACKUPDIR/alienarenabackup-4.tgz", "$BACKUPDIR/alienarenabackup-5.tgz");
 }
-if (-f "$BACKUPDIR/syncbackup-3.tgz")
+if (-f "$BACKUPDIR/alienarenabackup-3.tgz")
 {
-	rename("$BACKUPDIR/syncbackup-3.tgz", "$BACKUPDIR/syncbackup-4.tgz");
+	rename("$BACKUPDIR/alienarenabackup-3.tgz", "$BACKUPDIR/alienarenabackup-4.tgz");
 }
-if (-f "$BACKUPDIR/syncbackup-2.tgz")
+if (-f "$BACKUPDIR/alienarenabackup-2.tgz")
 {
-	rename("$BACKUPDIR/syncbackup-2.tgz", "$BACKUPDIR/syncbackup-3.tgz");
+	rename("$BACKUPDIR/alienarenabackup-2.tgz", "$BACKUPDIR/alienarenabackup-3.tgz");
 }
-if (-f "$BACKUPDIR/syncbackup-1.tgz")
+if (-f "$BACKUPDIR/alienarenabackup-1.tgz")
 {
-	rename("$BACKUPDIR/syncbackup-1.tgz", "$BACKUPDIR/syncbackup-2.tgz");
+	rename("$BACKUPDIR/alienarenabackup-1.tgz", "$BACKUPDIR/alienarenabackup-2.tgz");
 }
 print "Done\nCreating Backup: ";
-system("$TARCMD $BACKUPDIR/syncbackup-1.tgz $SYNCDIR --exclude='/sbbs/ctrl/localspy*.sock' --exclude='/sbbs/ctrl/status.sock'");
+system("$TARCMD $BACKUPDIR/alienarenabackup-1.tgz $ALIENARENADIR");
 if ($BACKUPSERVER ne "")
 {
 	print "Offsite backup requested\n";
-	print "Copying $BACKUPDIR/syncbackup-1.tgz to $BACKUPSERVER:$BACKUPPORT\n";
-	PrintDebugCommand("rsync -avz -e ssh $BACKUPDIR/syncbackup-1.tgz $BACKUPUSER\@$BACKUPSERVER:$BACKUPPATH\n");
-	system ("rsync -avz -e ssh $BACKUPDIR/syncbackup-1.tgz $BACKUPUSER\@$BACKUPSERVER:$BACKUPPATH");
+	print "Copying $BACKUPDIR/alienarenabackup-1.tgz to $BACKUPSERVER:$BACKUPPORT\n";
+	PrintDebugCommand("rsync -avz -e ssh $BACKUPDIR/alienarenabackup-1.tgz $BACKUPUSER\@$BACKUPSERVER:$BACKUPPATH\n");
+	system ("rsync -avz -e ssh $BACKUPDIR/alienarenabackup-1.tgz $BACKUPUSER\@$BACKUPSERVER:$BACKUPPATH");
 }
 
 print("Done!\n");
