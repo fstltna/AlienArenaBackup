@@ -1,10 +1,10 @@
 #!/usr/bin/perl
 
 # Set these for your situation
-my $ALIENARENADIR = "/root/alienarena";
+my $ALIENARENADIR = "/root/AlienArena";
 my $BACKUPDIR = "/root/backups";
 my $TARCMD = "/bin/tar czf";
-my $VERSION = "1.0";
+my $VERSION = "1.1";
 
 # Init file data
 my $MySettings = "$ENV{'HOME'}/.aabackuprc";
@@ -114,7 +114,7 @@ system("$TARCMD $BACKUPDIR/alienarenabackup-1.tgz '$ALIENARENADIR'");
 if ($BACKUPSERVER ne "")
 {
 	print "Offsite backup requested\n";
-	print "Copying $BACKUPDIR/alienarenabackup-1.tgz to $BACKUPSERVER:$BACKUPPORT\n";
+	print "Copying $BACKUPDIR/alienarenabackup-1.tgz to $BACKUPSERVER:$BACKUPPATH\n";
 	PrintDebugCommand("rsync -avz -e ssh $BACKUPDIR/alienarenabackup-1.tgz $BACKUPUSER\@$BACKUPSERVER:$BACKUPPATH\n");
 	system ("rsync -avz -e ssh $BACKUPDIR/alienarenabackup-1.tgz $BACKUPUSER\@$BACKUPSERVER:$BACKUPPATH");
 }
