@@ -1,10 +1,10 @@
 #!/usr/bin/perl
 
 # Set these for your situation
-my $ALIENARENADIR = "/root/AlienArena";
+my $ALIENARENADIR = "/root/alienarena";
 my $BACKUPDIR = "/root/backups";
 my $TARCMD = "/bin/tar czf";
-my $VERSION = "1.1";
+my $VERSION = "1.2";
 
 # Init file data
 my $MySettings = "$ENV{'HOME'}/.aabackuprc";
@@ -29,6 +29,14 @@ sub ReadConfigFile
 		{
 			chop();
 			my ($Command, $Setting) = split(/=/, $_);
+			if ($Command eq "alienarenadir")
+			{
+				$ALIENARENADIR = $Setting;
+			}
+			if ($Command eq "backupdir")
+			{
+				$BACKUPDIR = $Setting;
+			}
 			if ($Command eq "backupuser")
 			{
 				$BACKUPUSER = $Setting;
@@ -56,6 +64,8 @@ sub ReadConfigFile
 	{
 		# Store defaults
 		open (my $FH, ">", $MySettings) or die "Could not create default file '$MySettings' $!";
+		print $FH "alienarenadir=$ALIENARENADIR\n";
+		print $FH "backupdir=$BACKUPDIR\n";
 		print $FH "backupuser=\n";
 		print $FH "backuppass=\n";
 		print $FH "backupserver=\n";
