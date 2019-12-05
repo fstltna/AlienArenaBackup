@@ -1,4 +1,4 @@
-# AlienArenaBackup - backup script for Alien Arena (1.1)
+# AlienArenaBackup - backup script for Alien Arena (1.2)
 Creates a hot backup of your Alien Arena installation and optionally copies it to a offsite server.
 
 Official support sites: [Official Github Repo](https://github.com/fstltna/AlienArenaBackup) - [Official Forum](https://fps.gameplayer.club/index.php/forum/utilities) ![Alien Arena Logo](https://FPS.GamePlayer.club/aa2k12logo2.jpg) 
