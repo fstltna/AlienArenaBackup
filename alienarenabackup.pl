@@ -1,10 +1,10 @@
 #!/usr/bin/perl
 
 # Set these for your situation
-my $ALIENARENADIR = "/root/alienarena";
-my $BACKUPDIR = "/root/backups";
+my $ALIENARENADIR = "/home/aaowner/alienarena";
+my $BACKUPDIR = "/home/aaowner/backups";
 my $TARCMD = "/bin/tar czf";
-my $VERSION = "1.2";
+my $VERSION = "1.3";
 
 # Init file data
 my $MySettings = "$ENV{'HOME'}/.aabackuprc";
